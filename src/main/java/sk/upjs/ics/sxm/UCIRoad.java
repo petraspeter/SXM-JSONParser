@@ -40,9 +40,9 @@ public class UCIRoad {
     
     public void writeUCIRoad() {
         StringBuilder sb = new StringBuilder();
-        sb.append("Category: "+category+", season " +actualSeasosn+".\n");
+        sb.append("Category: ").append(category).append(", season ").append(actualSeasosn).append(".\n");
         for(Team team : teams) {
-            sb.append("\t"+team.writeTeam());
+            sb.append("\t").append(team.writeTeam());
         }
         System.out.println(sb.toString());
     }

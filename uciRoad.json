@@ -261,7 +261,7 @@
       },
       {
         "teamName": "Lotto Soudal",
-        "rider": {
+        "rider": [ {
           "firstName": "André",
           "lastName": "Greipel",
           "nickName": "The Gorilla",
@@ -370,10 +370,8 @@
               }
             ]
           }
-        }
+        } ]
       }
     ]
   }
 }
-
-

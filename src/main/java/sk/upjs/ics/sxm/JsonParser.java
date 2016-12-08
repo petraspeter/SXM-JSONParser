@@ -77,17 +77,18 @@ public class JsonParser {
                             achievements.add(achievement);
                         }
                         seasonAchievement.setAchievements(achievements);
-                        rider.setAchievements(seasonAchievements);
+                        seasonAchievements.add(seasonAchievement);
                     }
+                    rider.setAchievements(seasonAchievements);
                     
                     riders.add(rider);
                 }
+                team.setRiders(riders);
                 teams.add(team);
             }
-            uciRoad.setTeams(teams);
-            System.out.println(uciRoad.getTeams().toString());
-            uciRoad.writeUCIRoad();
             
+            uciRoad.setTeams(teams);
+            uciRoad.writeUCIRoad();
         } catch (Exception e) {
             System.err.println("Subor sa nepodarilo naparsovat!");
         }
