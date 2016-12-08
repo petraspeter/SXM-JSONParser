@@ -79,20 +79,17 @@ public class JsonParser {
                         seasonAchievement.setAchievements(achievements);
                         seasonAchievements.add(seasonAchievement);
                     }
-                    rider.setAchievements(seasonAchievements);
-                    
+                    rider.setAchievements(seasonAchievements);                    
                     riders.add(rider);
                 }
                 team.setRiders(riders);
                 teams.add(team);
-            }
-            
+            }            
             uciRoad.setTeams(teams);
             uciRoad.writeUCIRoad();
         } catch (Exception e) {
             System.err.println("Subor sa nepodarilo naparsovat!");
         }
-        
     }
     
     public static void main(String[] args) throws FileNotFoundException, IOException {
