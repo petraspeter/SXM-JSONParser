@@ -56,7 +56,7 @@ public class JsonParser {
                     rider.setDateOfBirth(jazdci[j].get("dateOfBirth").asText());
                     rider.setNationality(jazdci[j].get("nationality").asText());
                     JsonNode vyska = objectMapper.readValue(jazdci[j].get("height").toString(), JsonNode.class);
-                    rider.setHeight(vyska.get("unit").asText().charAt(0));
+                    rider.setHeightUnit(vyska.get("unit").asText());
                     rider.setHeight(vyska.get("value").asDouble());
                     JsonNode majorAchievement = objectMapper.readValue(jazdci[j].get("majorAchievement").toString(), JsonNode.class);
                     JsonNode sezona = objectMapper.readValue(majorAchievement.get("season").toString(), JsonNode.class);
@@ -77,19 +77,20 @@ public class JsonParser {
                             achievements.add(achievement);
                         }
                         seasonAchievement.setAchievements(achievements);
+                        rider.setAchievements(seasonAchievements);
                     }
-                    rider.setAchievements(seasonAchievements);
-                    riders.add(rider);
                     
+                    riders.add(rider);
                 }
                 teams.add(team);
             }
-            
+            uciRoad.setTeams(teams);
+            System.out.println(uciRoad.getTeams().toString());
+            uciRoad.writeUCIRoad();
             
         } catch (Exception e) {
-            
+            System.err.println("Subor sa nepodarilo naparsovat!");
         }
-        
         
     }
     
@@ -97,4 +98,5 @@ public class JsonParser {
         JsonParser jp = new JsonParser();
         jp.loadJson("uciRoad.json");
     }
+    
 }
